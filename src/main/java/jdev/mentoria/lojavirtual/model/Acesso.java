@@ -12,6 +12,8 @@ import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 
@@ -29,6 +31,8 @@ public class Acesso implements GrantedAuthority{
 	@Column(nullable = false)
 	private String descricao; /*Acesso ex: ROLE_ADMIN ou ROLE_SECRETRIO*/
 	
+	
+	@JsonIgnore
 	@Override
 	public String getAuthority() {
 		return this.descricao;
