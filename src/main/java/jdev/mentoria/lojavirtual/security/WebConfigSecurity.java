@@ -12,13 +12,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
-public class WebConfigSecurity extends WebSecurityConfigurerAdapter implements HttpSessionListener{
+public class WebConfigSecurity extends WebSecurityConfigurerAdapter implements HttpSessionListener {
+	
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers(HttpMethod.GET, "/salvarAcesso", "/deleteAcesso")
 		.antMatchers(HttpMethod.POST, "/salvarAcesso", "/deleteAcesso");
-		/*Ignorando URL no momento para não autenticar*/
+		/*Ingnorando URL no momento para nao autenticar*/
 	}
 
 }
