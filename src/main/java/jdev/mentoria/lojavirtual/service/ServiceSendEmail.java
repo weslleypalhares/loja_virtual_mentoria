@@ -21,14 +21,13 @@ public class ServiceSendEmail {
 	
 	
 	private String userName = "wrspteste@gmail.com";
-	private String senha = "Pmesp185.";
+	private String senha = "qmit rwfu cqks ktwk";
 	
 	@Async
 	public void enviarEmailHtml(String assunto, String menssagem, String emailDestino) throws UnsupportedEncodingException, MessagingException {
 		
 		Properties properties = new Properties();
 		properties.put("mail.smtp.ssl.trust", "*");
-		//properties.put("mail.smtp.ssl.checkserveridentity", "true");
 		properties.put("mail.smtp.auth", "true");
 		properties.put("mail.smtp.starttls", "false");
 		properties.put("mail.smtp.host", "smtp.gmail.com");
@@ -56,7 +55,7 @@ public class ServiceSendEmail {
 		message.setFrom(new InternetAddress(userName, "Alex - do Java Web", "UTF-8"));
 		message.setRecipients(Message.RecipientType.TO, toUser);
 		message.setSubject(assunto);
-		message.setText(menssagem);
+		message.setContent(menssagem, "text/html; charset=utf-8");
 		
 		Transport.send(message);
 		
