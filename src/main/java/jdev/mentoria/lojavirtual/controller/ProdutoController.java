@@ -29,16 +29,16 @@ public class ProdutoController {
 	
 	@ResponseBody /*Poder dar um retorno da API*/
 	@PostMapping(value = "**/salvarProduto") /*Mapeando a url para receber JSON*/
-	public ResponseEntity<Produto> salvarAcesso(@RequestBody @Valid Produto produto) throws ExceptionMentoriaJava { /*Recebe o JSON e converte pra Objeto*/
+	public ResponseEntity<Produto> salvarProduto(@RequestBody @Valid Produto produto) throws ExceptionMentoriaJava { /*Recebe o JSON e converte pra Objeto*/
 		
 		if (produto.getEmpresa() == null || produto.getEmpresa().getId() <= 0) {
 			throw new ExceptionMentoriaJava("Empresa responsável deve ser informada");
 		}
 		
 		if (produto.getId() == null) {
-			List<Produto> acessos = produtoRepository.buscarProdutoNome(produto.getNome().toUpperCase(), produto.getEmpresa().getId());
+			List<Produto> produtos = produtoRepository.buscarProdutoNome(produto.getNome().toUpperCase(), produto.getEmpresa().getId());
 
-			if (!acessos.isEmpty()) {
+			if (!produtos.isEmpty()) {
 				throw new ExceptionMentoriaJava("Já existe Produto com a descrição: " + produto.getNome());
 			}
 		}

@@ -39,7 +39,7 @@ public class AcessoController {
 			List<Acesso> acessos = acessoRepository.buscarAcessoDesc(acesso.getDescricao().toUpperCase());
 
 			if (!acessos.isEmpty()) {
-				throw new ExceptionMentoriaJava("Já existe Acesso com a descriçção: " + acesso.getDescricao());
+				throw new ExceptionMentoriaJava("Já existe Acesso com a descrição: " + acesso.getDescricao());
 			}
 		}
 		
